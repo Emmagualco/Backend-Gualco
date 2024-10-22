@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Spark Scooters - Productos en Tiempo Real</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/socketClient.js" defer></script>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <h1>Productos E-Spark Scooters en Tiempo Real</h1>
+
+  <ul id="productList">
+    <li>Cargando productos...</li> <!-- Mensaje de carga inicial -->
+  </ul>
+
+  <h2>Agregar Producto</h2>
+  <form id="productForm">
+    <input type="text" id="name" placeholder="Nombre del producto" required />
+    <input type="number" id="price" placeholder="Precio" min="0" required />
+    <button type="submit">Agregar</button>
+  </form>
+
+  <script>
+    const socket = io();
+    const productList = document.getElementById('productList');
+    const productForm = document.getElementById('productForm');
+
+    // Función para renderizar la lista de productos
+    const renderProducts = (products) => {
+      productList.innerHTML = ''; // Limpiar la lista
+      if (products.length === 0) {
+        productList.innerHTML = '<li>No hay productos disponibles.</li>';
+        return;
+      }
+      products.forEach((product) => {
+        // Verificar que el producto tenga un nombre y un precio definidos
+        if (product.name && product.price !== undefined) {
+          const li = document.createElement('li');
+          li.textContent = `${product.name} - $${product.price}`;
+          productList.appendChild(li);
+        } else {
+          console.error('Producto sin nombre o precio:', product); // Registro de error
+        }
+      });
+    };
+
+    // Escuchar cambios en los productos desde el servidor
+    socket.on('updateProducts', (products) => {
+      renderProducts(products);
+    });
+
+    // Enviar un nuevo producto al servidor mediante WebSocket
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const price = parseFloat(document.getElementById('price').value);
+
+      // Validar campos antes de enviar
+      if (!name || isNaN(price) || price < 0) {
+        alert('Por favor, ingresa datos válidos.');
+        return;
+      }
+
+      // Emitir el nuevo producto al servidor
+      socket.emit('newProduct', { id: Date.now(), name, price });
+      productForm.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "title": "E-Spark X1",
+      "description": "Scooter eléctrico con autonomía de 30 km.",
+      "code": "ESX1",
+      "price": 50000,
+      "status": true,
+      "stock": 10,
+      "category": "Scooters",
+      "thumbnails": ["images/espark_x1.png"]
+    },
+    {
+      "id": 2,
+      "title": "E-Spark X2 Pro",
+      "description": "Modelo avanzado con frenos de disco y 40 km de autonomía.",
+      "code": "ESX2",
+      "price": 75000,
+      "status": true,
+      "stock": 8,
+      "category": "Scooters",
+      "thumbnails": ["images/espark_x2.png"]
+    },
+    {
+      "id": 3,
+      "title": "E-Spark X3 City",
+      "description": "Diseñado para trayectos urbanos, plegable y liviano.",
+      "code": "ESX3",
+      "price": 42000,
+      "status": true,
+      "stock": 15,
+      "category": "Scooters",
+      "thumbnails": ["images/espark_x3.png"]
+    },
+    {
+      "id": 4,
+      "title": "E-Spark X4 Adventure",
+      "description": "Scooter todoterreno con suspensión mejorada.",
+      "code": "ESX4",
+      "price": 85000,
+      "status": true,
+      "stock": 5,
+      "category": "Scooters",
+      "thumbnails": ["images/espark_x4.png"]
+    },
+    {
+      "id": 5,
+      "title": "E-Spark X5 Lite",
+      "description": "Modelo económico con 20 km de autonomía.",
+      "code": "ESX5",
+      "price": 30000,
+      "status": true,
+      "stock": 20,
+      "category": "Scooters",
+      "thumbnails": ["images/espark_x5.png"]
+    }
+  ]
+  

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Spark Scooters - Productos</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <h1>Productos Disponibles</h1>
+
+  {{#if products.length}}
+    <ul>
+      {{#each products}}
+        <li>
+          <strong>{{title}}</strong> - ${{price}} <br>
+          <em>{{description}}</em> | Stock: {{stock}} unidades
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No hay productos disponibles en este momento.</p>
+  {{/if}}
+
+</body>
+</html>
+
